@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'Ruslan Display', cursive;
+    src: url("https://fonts.googleapis.com/css?family=Ruslan+Display");
+}
+html{
+    font-family: 'Ruslan Display', cursive;
+    margin-top: -21px;
+    background-color: black;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.IventContainer{
+    position: relative;
+    left: -155px;
+    top: -15px;
+    margin: 475px auto 0 auto;
+    width: 770px;
+    height: 880px;
+}
+.headBack{
+    width: 100%;
+    height: 100%;
+    background: scroll url("images/headerbg.jpg") no-repeat center top;
+}
+.greeter{
+    position: relative;
+    top: 450px;
+    left: -50px;
+    text-align: center;
+    color: azure;
+}
+.ivent {
+    position: relative;
+    float: left;
+    text-align: center;
+    margin: 10px 5px 10px 10px;
+    width: 30%;
+    height: 47%;
+}
+.PlotDesctiption{
+    position: relative;
+    margin: 10px 10px 10px 280px;
+    padding: 5px;
+    color: goldenrod;
+    width: 60%;
+    height: 95%;
+}
+.plot{
+    font-size: 15px;
+    text-indent: 20px;
+    position: relative;
+    top: -20px;
+    left: 0px;
+}
+.ActionContainer{
+    position: relative;
+    width: 255px;
+    height: 725px;
+    top: -705px;
+    left: 780px;
+}
+.action1{
+    margin: 10px;
+    width: 235px;
+    height: 220px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #d9950d;
+    transition: background-color 0.2s ease-out,
+    border-color 0.2s ease-out;
+}
+.action1:hover, .action1:active{
+    background-color: #d9950d;
+    background-color: rgba(217, 149, 13, 0.4);
+    border-color: #d9950d;
+    border-color: rgba(217, 149, 13, 0.4);
+    transition: background-color 0.3s ease-in,
+    border-color 0.3s ease-in;
+}
+.action2{
+    margin: 10px;
+    width: 235px;
+    height: 220px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #d9950d;
+    transition: background-color 0.2s ease-out,
+    border-color 0.2s ease-out;
+}
+.action2:hover, .action2:active{
+    background-color: #d9950d;
+    background-color: rgba(217, 149, 13, 0.4);
+    border-color: #d9950d;
+    border-color: rgba(217, 149, 13, 0.4);
+    transition: background-color 0.3s ease-in,
+    border-color 0.3s ease-in;
+}
+.action3{
+    margin: 10px;
+    width: 235px;
+    height: 220px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #d9950d;
+    transition: background-color 0.2s ease-out,
+    border-color 0.2s ease-out;
+}
+.action3:hover, .action3:active{
+    background-color: #d9950d;
+    background-color: rgba(217, 149, 13, 0.4);
+    border-color: #d9950d;
+    border-color: rgba(217, 149, 13, 0.4);
+    transition: background-color 0.3s ease-in,
+    border-color 0.3s ease-in;
+}
