@@ -120,4 +120,4 @@ body{
     border-color: rgba(217, 149, 13, 0.4);
     transition: background-color 0.3s ease-in,
     border-color 0.3s ease-in;
-}
+} /*переделать классы в кебаб кейсб, а имена файлов в кэмел кей*/
