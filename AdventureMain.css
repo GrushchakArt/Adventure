@@ -31,9 +31,11 @@ body{
     position: relative;
     float: left;
     text-align: center;
-    margin: 10px 5px 10px 10px;
+    margin: 30px 5px 10px 10px;
     width: 30%;
     height: 47%;
+    font-size: 20px;
+    font-weight: bold;
 }
 .plot-desctiption{
     position: relative;

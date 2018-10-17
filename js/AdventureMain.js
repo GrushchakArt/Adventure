@@ -34,8 +34,8 @@ const actionCollection = {
     }
 };
 
-blockElem = document.getElementById("block");
-const textBlock = new TextBlock(1, "Stranger! Help us!");
-blockCollection.blocks.push(textBlock);
-
-blockElem.innerHTML = blockCollection.getBlockById(1).text;
+document.getElementById("first").addEventListener("click", MyFunction);
+function MyFunction(){
+    document.getElementById("first-1").innerHTML="Подкравшись к твари сзади, вы одним ударом отрубаете ей голову. Никто не пострадал!";
+    document.getElementById().
+}
