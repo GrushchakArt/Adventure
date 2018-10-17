@@ -1,7 +1,3 @@
-@font-face {
-    font-family: 'Ruslan Display', cursive;
-    src: url("https://fonts.googleapis.com/css?family=Ruslan+Display");
-}
 html{
     font-family: 'Ruslan Display', cursive;
     margin-top: -21px;
@@ -11,7 +7,7 @@ body{
     padding: 0;
     margin: 0;
 }
-.IventContainer{
+.ivent-container{
     position: relative;
     left: -155px;
     top: -15px;
@@ -19,7 +15,7 @@ body{
     width: 770px;
     height: 880px;
 }
-.headBack{
+.head-back{
     width: 100%;
     height: 100%;
     background: scroll url("images/headerbg.jpg") no-repeat center top;
@@ -39,7 +35,7 @@ body{
     width: 30%;
     height: 47%;
 }
-.PlotDesctiption{
+.plot-desctiption{
     position: relative;
     margin: 10px 10px 10px 280px;
     padding: 5px;
@@ -54,14 +50,14 @@ body{
     top: -20px;
     left: 0px;
 }
-.ActionContainer{
+.action-container{
     position: relative;
     width: 255px;
     height: 725px;
     top: -705px;
     left: 780px;
 }
-.action1{
+.action1, .action2, .action3{
     margin: 10px;
     width: 235px;
     height: 220px;
@@ -71,53 +67,18 @@ body{
     outline: none;
     border: 2px solid #d9950d;
     transition: background-color 0.2s ease-out,
-    border-color 0.2s ease-out;
+    border-color 0.2s ease-out, color 0.2s ease-out;
+    color: #d9950d;
+    font-size: 20px;
+    font-weight: bold;
 }
-.action1:hover, .action1:active{
+.action1:hover, .action1:active, .action2:hover, .action2:active, .action3:hover, .action3:active{
     background-color: #d9950d;
     background-color: rgba(217, 149, 13, 0.4);
     border-color: #d9950d;
     border-color: rgba(217, 149, 13, 0.4);
+    color: black;
+    color: rgba(0, 0, 0,);
     transition: background-color 0.3s ease-in,
-    border-color 0.3s ease-in;
+    border-color 0.3s ease-in, color 0.3s ease-out;
 }
-.action2{
-    margin: 10px;
-    width: 235px;
-    height: 220px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: transparent;
-    outline: none;
-    border: 2px solid #d9950d;
-    transition: background-color 0.2s ease-out,
-    border-color 0.2s ease-out;
-}
-.action2:hover, .action2:active{
-    background-color: #d9950d;
-    background-color: rgba(217, 149, 13, 0.4);
-    border-color: #d9950d;
-    border-color: rgba(217, 149, 13, 0.4);
-    transition: background-color 0.3s ease-in,
-    border-color 0.3s ease-in;
-}
-.action3{
-    margin: 10px;
-    width: 235px;
-    height: 220px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: transparent;
-    outline: none;
-    border: 2px solid #d9950d;
-    transition: background-color 0.2s ease-out,
-    border-color 0.2s ease-out;
-}
-.action3:hover, .action3:active{
-    background-color: #d9950d;
-    background-color: rgba(217, 149, 13, 0.4);
-    border-color: #d9950d;
-    border-color: rgba(217, 149, 13, 0.4);
-    transition: background-color 0.3s ease-in,
-    border-color 0.3s ease-in;
-} /*переделать классы в кебаб кейсб, а имена файлов в кэмел кей*/
