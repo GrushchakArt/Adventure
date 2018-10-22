@@ -2,14 +2,6 @@ function TextBlock(uniq, text) {
     this.uniq = uniq;
     this.text = text
 }
-
-function Action(uniq, text, from_block_uniq, to_block_uniq) {
-    this.uniq = uniq;
-    this.text = text;
-    this.from_block_uniq = from_block_uniq;
-    this.to_block_uniq = to_block_uniq;
-}
-
 var blockCollection = {
     blocks: [],
     getBlockByUniq: function (uniq) {
@@ -21,25 +13,22 @@ var blockCollection = {
         }
     }
 };
-var actionCollection = {
-    actions: [],
-    getActionsByUniq: function (block_uniq) {
-        let actVariants = [];
-        for (let i=0; i< this.actions.length; i++) {
-            if (this.actions[i].from_block_uniq === block_uniq) {
-                actVariants.push(this.actions[i]);
-            }
-        }
-        return actVariants;
-    }
-};
-
-
-
-new Action("a1", "Подкрасться к монстру.", "a0", "b1");
-
-
 var blocks = [
+    new TextBlock("a0", "Который день шел путник по бескрайней пустоши не видя ни людей ни животных," +
+        "даже ни одна, чертова , муха не прожужжала над его смердящей головой.Сколько времени прошло? День? Неделя? Есть" +
+        "не хотелось, да и еды у него небыло. Как он попал в эту пустошь он тоже не знал. Казалось, он шел там всегда." +
+        "Всегда лямки суммки натирали плечи, всегда полы шляпы прикрывали лицо от света недвижущихся на небе светил. Он никогда не снимал ни того" +
+        "ни другого. Не возникало желания поправить одежду или перекинуть свою ношу в более удобное положение. " +
+        "Раздался, едва заметный, хруст. Путник остановился впервые за всю вечность. Отставил ногу, впервые с тех пор как родилась вселенная. " +
+        "Опустил голову и взглянул вниз с тех пор как начали свой ход звезды. Под тяжелым башмаком лежал раздавленый жук. " +
+        "Его панцир отливал бордовым цветом, а лапки продолжали дергаться" +
+        "в смертных корчах. Подул влажный ветерок, глаза сами собой закрылись, а лицо повернулось ему на встречу." +
+        "-Незнакомец! Помоги! - Издалека донесся голос. Сознание на секунду повело, чтобы не упасть" +
+        "пришлось открыть глаза Уши наполнились шумом листвы. Миллионы маленьких звуков прилетали отовсюду. " +
+        "Кромешная зелень влажных джунглей жгла глаза после стерелизованой белизны пустошей."+
+        "-Незнакомец! Скорей! - Меж деревьев, метрах в тридцати за деревом сидел старый мужчина. Из за листвы показался исполнских, с крупного льва, размеров богомол. " +
+        "Путник вспомнил, на поясе висит семейный клинок - у него есть семья? - а руки помнят как им пользоваться. " +
+        "Столит ли помагать старику, или вобще кому то? Этого он вспомнить не мог."),
     new TextBlock("d1", "-Такие твари редко сюда заходят, и обычно сразу двигаются в город, там то их и убивает стража. В среднем, раз " +
         "в две три декады, можем не опасаться, что придет еще один такой. Предлагаю сделать привал, торопиться нам некуда, у меня есть " +
         "пара вопросов, я не буду навязчивым, но надеюсь, что ты мне на них ответишь. - Старик достал из сумки пару свертков, сразу запахло" +
@@ -85,44 +74,104 @@ var blocks = [
         "-я слишком стар для этих похождений, четвертая сотня лет еще никого до добра не доводила. Прости мою неучтивость, " +
         "мы еще поговорим о моей благодарности, однако сейчас главное - как ты оказался в этой долине?")
 ];
-var actions = [
+function Action(uniq, text, from_block_uniq, to_block_uniq) {
+    this.uniq = uniq;
+    this.text = text;
+    this.from_block_uniq = from_block_uniq;
+    this.to_block_uniq = to_block_uniq;
+}
+var actionCollection = {
+    actions: [],
+    getActionsByUniq: function (block_uniq) {
+        let actVariants = [];
+        for (let i=0; i< this.actions.length; i++) {
+            if (this.actions[i].from_block_uniq === block_uniq) {
+                actVariants.push(this.actions[i]);
+            }
+        }
+        return actVariants;
+    }
+};
+var allActions = [
+    new Action("Start", "Вы готовы отправиться в путь?", "startTextBlock", "a0"),
+    new Action("a1", "Крадучись обойти монстра", "a0", "b1"),
+    new Action("a2", "Побежать на монстра с криком!", "a0", "b2"),
+    new Action("a3", "Затаиться и подождать.", "a0", "b3"),
     new Action("c1", "Рассказать правду.", "b1", "d1"),
-    new Action("e1", "Начать с себя.", "d1", "f1"),
-    new Action("e2", "Попросить, для начала, рассказать о себе и долине.", "d1", "f2"),
-    new Action("e3", "Начать жадно есть!", "d1", "f3"),
     new Action("c2", "Солгать, что вы не помните.", "b1", "d2"),
     new Action("c3", "Отказаться от ответа!", "b1", "d3"),
-    new Action("a2", "обежать на монстра с криком!", 0, "b2"),
     new Action("c4", "Принять помощь.", "b2", "d4"),
     new Action("c5", "В первую очередь - представиться.", "b2", "d5"),
     new Action("c6", "Отказаться!", "b2", "d6"),
-    new Action("a3", "Затаиться и подождать.", 0, "b3"),
     new Action("c7", "Как ты это сделал?", "b3", "d7"),
     new Action("c8", "Сказать, что поступил бы так снова.", "b3", "d8"),
-    new Action("c9", "Попытаться ударить старика", "b3", "d9")
+    new Action("c9", "Попытаться ударить старика", "b3", "d9"),
+    new Action("e1", "Начать с себя.", "d1", "f1"),
+    new Action("e2", "Попросить, для начала, рассказать о себе и долине.", "d1", "f2"),
+    new Action("e3", "Начать жадно есть!", "d1", "f3"),
 ];
-blockCollection.blocks = blocks;
-actionCollection.actions = actions;
-
-//document.getElementById("a1").addEventListener("click", NextTextBlock);
-/*function NextTextBlock() {
-    document.getElementById("a0").textContent = blockCollection.getBlockByUniq("b1").text;
-    let newActions = actionCollection.getActionsByUniq("b1");
-    document.getElementById("a1").textContent = newActions[0].text;
-    document.getElementById("a2").textContent = newActions[1].text;
-    document.getElementById("a3").textContent = newActions[2].text;
-
-}*/
-
-function clickAction(){
-    $("#a0").text(blockCollection.getBlockByUniq("b1").text);
-    let newActions = actionCollection.getActionsByUniq("b1");
-    $("#a1").text(newActions[0].text);
-    $("#a2").text(newActions[1].text);
-    $("#a3").text(newActions[2].text);
+function monster(type, lvl, name, health, attack, defense, loot_by_loot_num){
+    this.type = type;
+    this.lvl = lvl;
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
+    this.defense = defense;
+    this.loot = loot;
 }
+function armor(defense, loot_num){
+    this.defense = defense;
+    this.loot_num = loot_num;
+}
+function weapon(attack, defense, loot_num){
+    this.attack = attack;
+    this.defense = defense;
+    this.loot_num = loot_num;
+}
+var character = {
+    lvl: 0,
+    health: 10,
+    attack: weapon.attack, //поправить
+    defense: armor.defense, //поправить
+    weapon: weapon,
+    armor: armor,
+};
 
-$("#a1").click(clickAction);
 
-/*переименовать названия файлов*/
-//подумать над кнопками
+
+
+blockCollection.blocks = blocks;
+actionCollection.actions = allActions;
+var state = {
+    actionsNow: actionCollection.getActionsByUniq("a0"),
+    textBlockNow: blockCollection.getBlockByUniq("a0")
+};
+function renderState(){
+    $("#a0").text(state.textBlockNow.text);
+    $("#a1").text(state.actionsNow[0].text);
+    $("#a2").text(state.actionsNow[1].text);
+    $("#a3").text(state.actionsNow[2].text);
+}
+function clickLoop(event) {
+    let id = event.target.id;
+    let action;
+    if(id === "a1"){
+        action = state.actionsNow[0];
+    } else if (id === "a2"){
+        action = state.actionsNow[1];
+    } else {
+        action = state.actionsNow[2];
+    }
+    console.log(event.target.id);
+    state.textBlockNow = blockCollection.getBlockByUniq(action.to_block_uniq);
+    state.actionsNow = actionCollection.getActionsByUniq(state.textBlockNow.uniq);
+    renderState();
+}
+$("#a1").click(clickLoop);
+$("#a2").click(clickLoop);
+$("#a3").click(clickLoop);
+renderState();
+
+
+//добавить цикл
+// научиться создавать реьд элементы, чтобы создавать кнопки.

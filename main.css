@@ -59,7 +59,7 @@ body{
     top: -705px;
     left: 780px;
 }
-.action1, .action2, .action3{
+.action-button{
     margin: 10px;
     width: 235px;
     height: 220px;
@@ -74,13 +74,13 @@ body{
     font-size: 20px;
     font-weight: bold;
 }
-.action1:hover, .action1:active, .action2:hover, .action2:active, .action3:hover, .action3:active{
+.action-button:hover, .action-button:active{
     background-color: #d9950d;
     background-color: rgba(217, 149, 13, 0.4);
     border-color: #d9950d;
     border-color: rgba(217, 149, 13, 0.4);
     color: black;
-    color: rgba(0, 0, 0,);
+    color: rgba(0, 0, 0, 1);
     transition: background-color 0.3s ease-in,
     border-color 0.3s ease-in, color 0.3s ease-out;
 }
