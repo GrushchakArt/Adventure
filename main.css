@@ -25,7 +25,7 @@ body{
     top: 450px;
     left: -50px;
     text-align: center;
-    color: azure;
+    color: transparent;
 }
 .ivent {
     position: relative;
@@ -43,7 +43,7 @@ body{
     padding: 5px;
     color: goldenrod;
     width: 60%;
-    height: 95%;
+    height: 70%;
 }
 .plot{
     font-size: 15px;
@@ -53,16 +53,21 @@ body{
     left: 0px;
 }
 .action-container{
+
+
+
     position: relative;
-    width: 255px;
-    height: 725px;
-    top: -705px;
-    left: 780px;
+    width: 550px;
+    height: 250px;
+    top: 0px;
+    left: 250px;
+    overflow: hidden;
+    line-height: 45px;
 }
 .action-button{
     margin: 10px;
-    width: 235px;
-    height: 220px;
+    width: 250px;
+    height: 50px;
     text-align: center;
     border-radius: 10px;
     background-color: transparent;
@@ -71,7 +76,6 @@ body{
     transition: background-color 0.2s ease-out,
     border-color 0.2s ease-out, color 0.2s ease-out;
     color: #d9950d;
-    font-size: 20px;
     font-weight: bold;
 }
 .action-button:hover, .action-button:active{

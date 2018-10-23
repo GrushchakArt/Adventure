@@ -4,6 +4,11 @@ function TextBlock(uniq, text) {
 }
 var blockCollection = {
     blocks: [],
+    /**
+     * Возвращает текстовый блок по его идентификатору
+     * @param uniq string Уникальный идентификатор блока
+     * @returns TextBlock Текстовый блок
+     */
     getBlockByUniq: function (uniq) {
         for (var i in this.blocks) {
             if (this.blocks[i].uniq === uniq) {
@@ -79,6 +84,15 @@ var blocks = [
         "-я слишком стар для этих похождений, четвертая сотня лет еще никого до добра не доводила. Прости мою неучтивость, " +
         "мы еще поговорим о моей благодарности, однако сейчас главное - как ты оказался в этой долине?")
 ];
+
+/**
+ *
+ * @param uniq
+ * @param text
+ * @param from_block_uniq
+ * @param to_block_uniq
+ * @constructor
+ */
 function Action(uniq, text, from_block_uniq, to_block_uniq) {
     this.uniq = uniq;
     this.text = text;
@@ -87,6 +101,11 @@ function Action(uniq, text, from_block_uniq, to_block_uniq) {
 }
 var actionCollection = {
     actions: [],
+    /**
+     * Возвращает массив дествий относящихся к блоку
+     * @param block_uniq string Уникальный идентификатор блока
+     * @returns Action[] массив подходящих действий
+     */
     getActionsByUniq: function (block_uniq) {
         let actionVariants = [];
         for (let i=0; i< this.actions.length; i++) {
@@ -145,10 +164,10 @@ function weapon(attack, defense, loot_num){
 var character = {
     lvl: 0,
     health: 10,
-    attack: weapon.attack, //поправить
-    defense: armor.defense, //поправить
-    weapon: weapon,
-    armor: armor,
+    attack: 0, //поправить
+    defense: 0, //поправить
+    weapon: {}, //empty object
+    armor: {},
 };
 blockCollection.blocks = blocks;
 actionCollection.actions = allActions;
@@ -157,37 +176,43 @@ var state = {
     actionsNow: actionCollection.getActionsByUniq("a0"),
     textBlockNow: blockCollection.getBlockByUniq("a0")
 };
-function renderState(){
-    $("#a0").text(state.textBlockNow.text);
-    for (var i = 0; i < allActions.length; i++){
-        if (state.textBlockNow.uniq===actionCollection.actions[i].from_block_uniq){
-            state.actionsNow.push(actionCollection.actions[i])
-        }
-    }
-    console.log(state);
-    $("#a1").text(state.actionsNow[0].text);
-    $("#a2").text(state.actionsNow[1].text);
-    $("#a3").text(state.actionsNow[2].text);
-}
+//обработчик клика по кнопке с id = event.target.id
 function clickLoop(event) {
     let id = event.target.id;
-    let action;
-    if(id === "a1"){
-        action = state.actionsNow[0];
-    } else if (id === "a2"){
-        action = state.actionsNow[1];
-    } else {
-        action = state.actionsNow[2];
+    let actionUnic = id.substr(7);
+    for (let i = 0; i < state.actionsNow.length; i++){
+        if (actionUnic === state.actionsNow[i].uniq) {
+            state.textBlockNow = blockCollection.getBlockByUniq(state.actionsNow[i].to_block_uniq);
+            break
+        }
     }
-
-    state.textBlockNow = blockCollection.getBlockByUniq(action.to_block_uniq);
     state.actionsNow = actionCollection.getActionsByUniq(state.textBlockNow.uniq);
     renderState();
 }
-$("#a1").click(clickLoop);
-$("#a2").click(clickLoop);
-$("#a3").click(clickLoop);
+
+/**
+ * Отрисовывает state и навешивает обработчики на кнопки
+ */
+function renderState(){
+    $("#a0").text(state.textBlockNow.text);
+    state.actionsNow = actionCollection.getActionsByUniq(state.textBlockNow.uniq);
+    console.log(state);
+    var buttons = '';
+    for (let i = 0; i<state.actionsNow.length; i++){
+        buttons += '<button class="action-button" id="action-' + state.actionsNow[i].uniq +
+            '" type="button"><span class="action-button-text">' + state.actionsNow[i].text + '</span></button>'
+    }
+    document.getElementById("actionContainer").innerHTML = buttons;
+    for (let i = 0; i<state.actionsNow.length; i++){
+        $('#action-' + state.actionsNow[i].uniq).click(clickLoop)
+    }
+}
+//отрисовывает первичное состояние
 renderState();
+
+
+
+
 //1-создаем обьект state в нем два элемента. экшенснау и текстблокнау.
 //  в экшенснау[массив] лежит юник текстблока полученый методом гетэешенсбайюник обьекта экшенсколлекшен
 // в текстблокнау лежит юник текстболка полученый методом гетблокбайюник обьекта блокколлекшен
@@ -206,3 +231,5 @@ renderState();
 //  равен аргументу фромблок юник экшена, если они равны метод складывает подходящие экшены в массив экшенвариантс
 
 // научиться создавать реьд элементы, чтобы создавать кнопки.
+//документацию написать
+//gjghfdbnm ryjgjxrbкнопки
