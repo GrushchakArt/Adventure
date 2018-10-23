@@ -1,0 +1,90 @@
+html{
+    font-family: 'Ruslan Display', cursive;
+    margin-top: -21px;
+    background-color: black;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.ivent-container{
+    position: relative;
+    left: -155px;
+    top: -15px;
+    margin: 475px auto 0 auto;
+    width: 770px;
+    height: 880px;
+}
+.head-back{
+    width: 100%;
+    height: 100%;
+    background: scroll url("images/headerbg.jpg") no-repeat center top;
+}
+.greeter{
+    position: relative;
+    top: 450px;
+    left: -50px;
+    text-align: center;
+    color: transparent;
+}
+.ivent {
+    position: relative;
+    float: left;
+    text-align: center;
+    margin: 30px 5px 10px 10px;
+    width: 30%;
+    height: 47%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.plot-desctiption{
+    position: relative;
+    margin: 10px 10px 10px 280px;
+    padding: 5px;
+    color: goldenrod;
+    width: 60%;
+    height: 70%;
+}
+.plot{
+    font-size: 15px;
+    text-indent: 20px;
+    position: relative;
+    top: -10px;
+    left: 0px;
+}
+.action-container{
+
+
+
+    position: relative;
+    width: 550px;
+    height: 250px;
+    top: 0px;
+    left: 250px;
+    overflow: hidden;
+    line-height: 45px;
+}
+.action-button{
+    margin: 10px;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #d9950d;
+    transition: background-color 0.2s ease-out,
+    border-color 0.2s ease-out, color 0.2s ease-out;
+    color: #d9950d;
+    font-weight: bold;
+}
+.action-button:hover, .action-button:active{
+    background-color: #d9950d;
+    background-color: rgba(217, 149, 13, 0.4);
+    border-color: #d9950d;
+    border-color: rgba(217, 149, 13, 0.4);
+    color: black;
+    color: rgba(0, 0, 0, 1);
+    transition: background-color 0.3s ease-in,
+    border-color 0.3s ease-in, color 0.3s ease-out;
+}
