@@ -31,7 +31,7 @@ var blockCollection = {
 //
 /**
  *
- * @type {*[]}
+ * @type TextBlock[]
  */
 var blocks = [
     new TextBlock("a0", "Который день шел путник по бескрайней пустоши не видя ни людей ни животных," +
