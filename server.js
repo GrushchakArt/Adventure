@@ -1,23 +1,19 @@
-var countDookoo = 0; //переменная в которую собираются запросы
+const http = require('http');
+const fs = require('fs');
 
-const http = require('http'); //переменная c запросом типа передачи
-var fs = require('fs');
-
-/*function css(request, response) {
-    if (request.url === '/styles.css') {
-        response.writeHead(200, {'Content-type' : 'text/css'});
-        var fileContents = fs.readFileSync('./views/styles.css', {encoding: 'utf8'});
-        response.write(fileContents);
-    }
-}*/
-
-var routes = {
-    '/main.css': function (req, res) {
-        fs.readFile('./main.css', function (err, data) {
-            res.writeHead(200, {'Content-Type': 'text/css'});
+function sendFile(name, type) {
+    return function(req, res) {
+        fs.readFile(name, function (err, data) {
+            res.writeHead(200, {'Content-Type': type});
             res.end(data);
         });
-    },
+    }
+};
+
+
+var routes = {
+    '/main.css': sendFile('./main.css', 'text/css'),
+
     '/js/main.js': function (req, res) {
         fs.readFile('./js/main.js', function (err, data) {
             res.writeHead(200, {'Content-Type': 'text/javascript'});
@@ -49,10 +45,8 @@ function requestHandler(req, res) {
     if (req.url in routes){
         routes[req.url](req, res)
     } else {
-        var data = 'not found';
         res.writeHead(404, {'Content-Type': 'text/html'});
-        
-        res.end();
+        res.end('not found');
     }
 }
 const server = http.createServer(requestHandler); //запуск сервера с помощью обработчика
@@ -62,3 +56,6 @@ server.listen(3000, function (bug) { //прослушка порта
 
 
 //https://ru.wikipedia.org/wiki/HTTP читать
+//победить баттоны
+//допилить обработчики на использование новой функции
+//codeacademy
