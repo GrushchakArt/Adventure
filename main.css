@@ -38,36 +38,36 @@ body{
     font-weight: bold;
 }
 .plot-desctiption{
+    border: 2px solid black;
+
     position: relative;
     margin: 10px 10px 10px 280px;
     padding: 5px;
     color: goldenrod;
-    width: 60%;
-    height: 70%;
+    width: 470px;
+    height: 610px;
 }
 .plot{
     font-size: 15px;
-    text-indent: 20px;
-    position: relative;
+    text-indent: 30px;
+    position: absolute;
     top: -10px;
-    left: 0px;
 }
 .action-container{
+    border: 2px solid white;
 
-
-
+    text-align: center;
     position: relative;
-    width: 550px;
+    width: 700px;
     height: 250px;
     top: 0px;
-    left: 250px;
+    left: 30px;
     overflow: hidden;
-    line-height: 45px;
 }
 .action-button{
     margin: 10px;
-    width: 250px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     text-align: center;
     border-radius: 10px;
     background-color: transparent;
@@ -77,6 +77,8 @@ body{
     border-color 0.2s ease-out, color 0.2s ease-out;
     color: #d9950d;
     font-weight: bold;
+    overflow: hidden;
+    line-height: 15px;
 }
 .action-button:hover, .action-button:active{
     background-color: #d9950d;
@@ -87,4 +89,9 @@ body{
     color: rgba(0, 0, 0, 1);
     transition: background-color 0.3s ease-in,
     border-color 0.3s ease-in, color 0.3s ease-out;
+}
+.action-button-text{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }

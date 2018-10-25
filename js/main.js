@@ -94,7 +94,6 @@ var blocks = [
         "-я слишком стар для этих похождений, четвертая сотня лет еще никого до добра не доводила. Прости мою неучтивость, " +
         "мы еще поговорим о моей благодарности, однако сейчас главное - как ты оказался в этой долине?")
 ];
-
 /**
  *
  * @param uniq
@@ -134,6 +133,10 @@ var actionCollection = {
 //  то этот элемент/экшен складывается в массив экшенвариантс
 // по итогу МЫ ПОЛУЧАЕМ МАССИВ ЭКШЕНВАРИАНТС С ЭКШЕНАМИ ПОДХОДЯЩИМИ К ТЕКСТБЛОКУ ЧЕЙ ЮНИК ЗАДАН КАК АРГУМЕНТ
 //
+/**
+ *
+ * @type allActions[]
+ */
 var allActions = [
     new Action("Start", "Вы готовы отправиться в путь?", "startTextBlock", "a0"),
     new Action("a1", "Крадучись обойти монстра", "a0", "g0"),
@@ -182,11 +185,19 @@ var character = {
 blockCollection.blocks = blocks;
 actionCollection.actions = allActions;
 
+/**
+ * Переменная содержащая нынешнее состояние страницы
+ * @type {{actionsNow: (*|Action[]), textBlockNow: (*|TextBlock)}}
+ */
 var state = {
     actionsNow: actionCollection.getActionsByUniq("a0"),
     textBlockNow: blockCollection.getBlockByUniq("a0")
 };
 //обработчик клика по кнопке с id = event.target.id
+/**
+ * Обработчик клика
+ * @param event
+ */
 function clickLoop(event) {
     let id = event.target.id;
     let actionUnic = id.substr(7);
@@ -210,7 +221,8 @@ function renderState(){
     var buttons = '';
     for (let i = 0; i<state.actionsNow.length; i++){
         buttons += '<button class="action-button" id="action-' + state.actionsNow[i].uniq +
-            '" type="button"><span class="action-button-text">' + state.actionsNow[i].text + '</span></button>'
+            '" type="button" value="Вы решили' + state.actionsNow[i].text +'"><span class="action-button-text">'
+            + state.actionsNow[i].text + '</span></button>'
     }
     document.getElementById("actionContainer").innerHTML = buttons;
     for (let i = 0; i<state.actionsNow.length; i++){
@@ -218,6 +230,9 @@ function renderState(){
     }
 }
 //отрисовывает первичное состояние
+/**
+ * a
+ */
 renderState();
 
 
